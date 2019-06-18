@@ -1,0 +1,10 @@
+{
+  "name": "buildtoolsnc",
+  "version": "1.0.0",
+  "description": "Learning FEBT",
+  "scripts": {},
+  "author": "Sergio Lucas",
+  "dependencies": {
+    "sass": "^1.21.0"
+  }
+}
