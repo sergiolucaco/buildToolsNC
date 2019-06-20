@@ -2,9 +2,15 @@
   "name": "buildtoolsnc",
   "version": "1.0.0",
   "description": "Learning FEBT",
-  "scripts": {},
+  "scripts": {
+    "sass": "gulp sass",
+    "build": "gulp build"
+  },
   "author": "Sergio Lucas",
   "dependencies": {
-    "sass": "^1.21.0"
+    "gulp": "^4.0.2",
+    "gulp-sass": "^4.0.2",
+    "gulp-rename": "^1.4.0",
+    "del": "^4.1.1"
   }
 }
