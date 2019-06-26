@@ -4,13 +4,28 @@
   "description": "Learning FEBT",
   "scripts": {
     "sass": "gulp sass",
-    "build": "gulp build"
+    "build": "NODE_ENV=production gulp build",
+    "lint:js": "eslint ./src/js/",
+    "lint:css": "stylelint ./src/scss",
+    "watch": "NODE_ENV=development gulp watch"
   },
   "author": "Sergio Lucas",
   "dependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "del": "^4.1.1",
+    "eslint": "^6.0.1",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.18.0",
     "gulp": "^4.0.2",
-    "gulp-sass": "^4.0.2",
+    "gulp-babel": "^8.0.0",
+    "gulp-htmlmin": "^5.0.1",
+    "gulp-if": "^2.0.2",
+    "gulp-nunjucks": "^5.0.0",
     "gulp-rename": "^1.4.0",
-    "del": "^4.1.1"
+    "gulp-sass": "^4.0.2",
+    "stylelint": "^10.1.0",
+    "stylelint-config-recommended": "^2.2.0",
+    "webpack-stream": "^5.2.1"
   }
 }
