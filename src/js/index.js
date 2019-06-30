@@ -1,3 +1,3 @@
-import { printHelloWorld } from './components/header/header';
+import printHelloWorld from './components/header/header';
 
 printHelloWorld('son');

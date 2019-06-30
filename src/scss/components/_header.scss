@@ -5,3 +5,16 @@
     color: $primary;
     font-size: 14px;
 }
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+a {
+    color: $defaultBlack;
+    text-decoration: none;
+    &:hover {
+        color: $primaryHover;
+    }
+}

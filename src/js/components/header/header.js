@@ -1,4 +1,3 @@
-export default function printHelloWorld(name) {
+export default function (name) {
   console.log(`Hello World !!, ${name}`);
-
 }
