@@ -1,4 +1,3 @@
-'use strict';
 
 const gulp = require('gulp');
 const sass = require('gulp-sass');
@@ -9,7 +8,8 @@ const webpack = require('webpack-stream');
 const nunjucks = require('gulp-nunjucks');
 const htmlmin = require('gulp-htmlmin');
 const gulpIf = require('gulp-if');
-const isProduction = process.env.NODE_ENV === 'production'
+
+const isProduction = process.env.NODE_ENV === 'production';
 
 sass.compiler = require('node-sass');
 const dist = './dist/';
@@ -24,6 +24,7 @@ const paths = {
   distCSS: `${dist}css`,
   distJs: `${dist}js`
 }
+
 gulp.task('sass', function () {
   return gulp.src(paths.srcScss)
     .pipe(sass().on('error', sass.logError))
