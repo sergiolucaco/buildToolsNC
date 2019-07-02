@@ -4,9 +4,10 @@
   "description": "Learning FEBT",
   "scripts": {
     "sass": "gulp sass",
-    "build": "NODE_ENV=production gulp build",
+    "build": "NODE_ENV=production npm-run-all lint && gulp build",
     "lint:js": "eslint ./src/js/",
     "lint:css": "stylelint ./src/scss",
+    "lint": "npm-run-all lint:*",
     "watch": "NODE_ENV=development gulp watch"
   },
   "author": "Sergio Lucas",
@@ -26,6 +27,7 @@
     "gulp-sass": "^4.0.2",
     "stylelint": "^10.1.0",
     "stylelint-config-recommended": "^2.2.0",
-    "webpack-stream": "^5.2.1"
+    "webpack-stream": "^5.2.1",
+    "npm-run-all": "^4.1.5"
   }
 }
