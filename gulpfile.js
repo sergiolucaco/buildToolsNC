@@ -8,6 +8,7 @@ const webpack = require('webpack-stream');
 const nunjucks = require('gulp-nunjucks');
 const htmlmin = require('gulp-htmlmin');
 const gulpIf = require('gulp-if');
+const browserSync = require('browser-sync').create();
 
 const isProduction = process.env.NODE_ENV === 'production';
 
@@ -29,7 +30,8 @@ gulp.task('sass', function () {
   return gulp.src(paths.srcScss)
     .pipe(sass().on('error', sass.logError))
     .pipe(rename('styles.css'))
-    .pipe(gulp.dest(paths.distCSS));
+    .pipe(gulp.dest(paths.distCSS))
+    .pipe(browserSync.stream());
 });
 
 gulp.task('js', () => {
@@ -40,6 +42,7 @@ gulp.task('js', () => {
     .pipe(webpack({ mode: process.env.NODE_ENV }))
     .pipe(rename('index.js'))
     .pipe(gulp.dest(paths.distJs))
+    .pipe(browserSync.stream());
 });
 
 gulp.task('html', () =>
@@ -54,6 +57,19 @@ gulp.task('clean', function () {
 });
 
 gulp.task('build', gulp.series('clean', gulp.parallel('sass', 'js', 'html')));
+
+// Static Server + watching scss/html files
+gulp.task('serve', gulp.series('build', function() {
+
+  browserSync.init({
+      server: dist
+  });
+
+  gulp.watch(paths.watchSrcScss, gulp.series('sass'))
+  gulp.watch(paths.watchSrcJs, gulp.series('js'))
+  gulp.watch(paths.watchSrcHtml, gulp.series('html'))
+  // gulp.watch("app/*.html").on('change', browserSync.reload);
+}));
 
 gulp.task('watch', gulp.series('build', function () {
   gulp.watch(paths.watchSrcScss, gulp.series('sass'))
