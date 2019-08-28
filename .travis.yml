@@ -6,4 +6,7 @@ script:
   - npm run lint
 cache:
   directories:
-- node_modules
+    - node_modules
+branches:
+  only:
+    - develop
