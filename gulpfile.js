@@ -13,6 +13,7 @@ const browserSync = require('browser-sync').create();
 const isProduction = process.env.NODE_ENV === 'production';
 
 sass.compiler = require('node-sass');
+
 const dist = './dist/';
 const src = './src/';
 const paths = {
@@ -23,56 +24,47 @@ const paths = {
   srcJs: `${src}js/index.js`,
   srcHtml: `${src}/*.html`,
   distCSS: `${dist}css`,
-  distJs: `${dist}js`
-}
+  distJs: `${dist}js`,
+};
 
-gulp.task('sass', function () {
-  return gulp.src(paths.srcScss)
-    .pipe(sass().on('error', sass.logError))
-    .pipe(rename('styles.css'))
-    .pipe(gulp.dest(paths.distCSS))
-    .pipe(browserSync.stream());
-});
+gulp.task('sass', () => gulp.src(paths.srcScss)
+  .pipe(sass().on('error', sass.logError))
+  .pipe(rename('styles.css'))
+  .pipe(gulp.dest(paths.distCSS))
+  .pipe(browserSync.stream()));
 
-gulp.task('js', () => {
-  return gulp.src(paths.srcJs)
-    .pipe(babel({
-      presets: ['@babel/env']
-    }))
-    .pipe(webpack({ mode: process.env.NODE_ENV }))
-    .pipe(rename('index.js'))
-    .pipe(gulp.dest(paths.distJs))
-    .pipe(browserSync.stream());
-});
+gulp.task('js', () => gulp.src(paths.srcJs)
+  .pipe(babel({
+    presets: ['@babel/env'],
+  }))
+  .pipe(webpack({ mode: process.env.NODE_ENV }))
+  .pipe(rename('index.js'))
+  .pipe(gulp.dest(paths.distJs))
+  .pipe(browserSync.stream()));
 
-gulp.task('html', () =>
-  gulp.src(paths.srcHtml)
-    .pipe(nunjucks.compile())
-    .pipe(gulpIf(isProduction, htmlmin({ collapseWhitespace: true })))
-    .pipe(gulp.dest(dist))
-);
+gulp.task('html', () => gulp.src(paths.srcHtml)
+  .pipe(nunjucks.compile())
+  .pipe(gulpIf(isProduction, htmlmin({ collapseWhitespace: true })))
+  .pipe(gulp.dest(dist)));
 
-gulp.task('clean', function () {
-  return del([`${dist}*`]);
-});
+gulp.task('clean', () => del([`${dist}*`]));
 
 gulp.task('build', gulp.series('clean', gulp.parallel('sass', 'js', 'html')));
 
-// Static Server + watching scss/html files
-gulp.task('serve', gulp.series('build', function() {
-
+// Static Server + watching scss/html/js files
+gulp.task('serve', gulp.series('build', () => {
   browserSync.init({
-      server: dist
+    server: dist,
   });
 
-  gulp.watch(paths.watchSrcScss, gulp.series('sass'))
-  gulp.watch(paths.watchSrcJs, gulp.series('js'))
-  gulp.watch(paths.watchSrcHtml, gulp.series('html'))
+  gulp.watch(paths.watchSrcScss, gulp.series('sass'));
+  gulp.watch(paths.watchSrcJs, gulp.series('js'));
+  gulp.watch(paths.watchSrcHtml, gulp.series('html'));
   // gulp.watch("app/*.html").on('change', browserSync.reload);
 }));
 
-gulp.task('watch', gulp.series('build', function () {
-  gulp.watch(paths.watchSrcScss, gulp.series('sass'))
-  gulp.watch(paths.watchSrcJs, gulp.series('js'))
-  gulp.watch(paths.watchSrcHtml, gulp.series('html'))
-}))
+gulp.task('watch', gulp.series('build', () => {
+  gulp.watch(paths.watchSrcScss, gulp.series('sass'));
+  gulp.watch(paths.watchSrcJs, gulp.series('js'));
+  gulp.watch(paths.watchSrcHtml, gulp.series('html'));
+}));
