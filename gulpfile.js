@@ -45,7 +45,8 @@ gulp.task('js', () => gulp.src(paths.srcJs)
 gulp.task('html', () => gulp.src(paths.srcHtml)
   .pipe(nunjucks.compile())
   .pipe(gulpIf(isProduction, htmlmin({ collapseWhitespace: true })))
-  .pipe(gulp.dest(dist)));
+  .pipe(gulp.dest(dist))
+  .pipe(browserSync.stream()));
 
 gulp.task('clean', () => del([`${dist}*`]));
 
@@ -60,7 +61,6 @@ gulp.task('serve', gulp.series('build', () => {
   gulp.watch(paths.watchSrcScss, gulp.series('sass'));
   gulp.watch(paths.watchSrcJs, gulp.series('js'));
   gulp.watch(paths.watchSrcHtml, gulp.series('html'));
-  // gulp.watch("app/*.html").on('change', browserSync.reload);
 }));
 
 gulp.task('watch', gulp.series('build', () => {
