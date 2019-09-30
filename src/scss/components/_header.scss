@@ -3,17 +3,21 @@
 
 .header  { 
     color: $primary;
-    font-size: 14px;
+    font-size: 2em;
+    margin: 0;
 }
 
 ul {
+    display: flex;
+    flex-wrap: wrap;
     list-style: none;
     padding: 0;
 }
 
 a {
-    color: $defaultBlack;
     text-decoration: none;
+    color: $defaultBlack;
+    padding: 1rem;
     &:hover {
         color: $primaryHover;
     }

@@ -27,7 +27,7 @@ const paths = {
   distJs: `${dist}js`,
 };
 
-gulp.task('sass', () => gulp.src(paths.srcScss)
+gulp.task('css', () => gulp.src(paths.srcScss)
   .pipe(sass().on('error', sass.logError))
   .pipe(rename('styles.css'))
   .pipe(gulp.dest(paths.distCSS))
@@ -58,12 +58,6 @@ gulp.task('serve', gulp.series('build', () => {
     server: dist,
   });
 
-  gulp.watch(paths.watchSrcScss, gulp.series('sass'));
-  gulp.watch(paths.watchSrcJs, gulp.series('js'));
-  gulp.watch(paths.watchSrcHtml, gulp.series('html'));
-}));
-
-gulp.task('watch', gulp.series('build', () => {
   gulp.watch(paths.watchSrcScss, gulp.series('sass'));
   gulp.watch(paths.watchSrcJs, gulp.series('js'));
   gulp.watch(paths.watchSrcHtml, gulp.series('html'));

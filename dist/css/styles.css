@@ -1,13 +1,21 @@
 .header {
   color: red;
-  font-size: 14px; }
+  font-size: 2em;
+  margin: 0; }
 
 ul {
+  display: flex;
+  flex-wrap: wrap;
   list-style: none;
   padding: 0; }
 
 a {
+  text-decoration: none;
   color: black;
-  text-decoration: none; }
+  padding: 1rem; }
   a:hover {
     color: green; }
+
+html,
+body {
+  margin: 0; }
