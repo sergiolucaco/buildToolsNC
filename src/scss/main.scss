@@ -4,3 +4,15 @@ html,
 body {
     margin: 0;
 }
+
+.febt {
+    &__container {
+        display: grid;
+        padding: 0 2rem;
+    }
+    
+    &__anchor {
+        text-decoration: none;
+        color: $sectionAnchor;
+    }
+}

@@ -1,21 +1,27 @@
 .header {
-  color: red;
+  color: #5E34AB;
   font-size: 2em;
   margin: 0; }
-
-ul {
-  display: flex;
-  flex-wrap: wrap;
-  list-style: none;
-  padding: 0; }
-
-a {
-  text-decoration: none;
-  color: black;
-  padding: 1rem; }
-  a:hover {
-    color: green; }
+  .header__list {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0; }
+  .header__anchor {
+    text-decoration: none;
+    color: black;
+    padding: 1rem; }
+    .header__anchor:hover {
+      color: #784FF1; }
 
 html,
 body {
   margin: 0; }
+
+.febt__container {
+  display: grid;
+  padding: 0 2rem; }
+
+.febt__anchor {
+  text-decoration: none;
+  color: #0084BD; }

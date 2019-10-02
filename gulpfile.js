@@ -22,7 +22,7 @@ const paths = {
   watchSrcJs: `${src}js/**/*.js`,
   watchSrcHtml: `${src}**/*.html`,
   srcJs: `${src}js/index.js`,
-  srcHtml: `${src}/*.html`,
+  srcHtml: `${src}*.html`,
   distCSS: `${dist}css`,
   distJs: `${dist}js`,
 };
@@ -50,7 +50,7 @@ gulp.task('html', () => gulp.src(paths.srcHtml)
 
 gulp.task('clean', () => del([`${dist}*`]));
 
-gulp.task('build', gulp.series('clean', gulp.parallel('sass', 'js', 'html')));
+gulp.task('build', gulp.series('clean', gulp.parallel('css', 'js', 'html')));
 
 // Static Server + watching scss/html/js files
 gulp.task('serve', gulp.series('build', () => {
@@ -58,7 +58,7 @@ gulp.task('serve', gulp.series('build', () => {
     server: dist,
   });
 
-  gulp.watch(paths.watchSrcScss, gulp.series('sass'));
+  gulp.watch(paths.watchSrcScss, gulp.series('css'));
   gulp.watch(paths.watchSrcJs, gulp.series('js'));
   gulp.watch(paths.watchSrcHtml, gulp.series('html'));
 }));

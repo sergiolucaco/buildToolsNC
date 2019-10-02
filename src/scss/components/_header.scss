@@ -5,20 +5,20 @@
     color: $primary;
     font-size: 2em;
     margin: 0;
-}
 
-ul {
-    display: flex;
-    flex-wrap: wrap;
-    list-style: none;
-    padding: 0;
-}
+    &__list {
+        display: flex;
+        flex-wrap: wrap;
+        list-style: none;
+        padding: 0;
+    }
 
-a {
-    text-decoration: none;
-    color: $defaultBlack;
-    padding: 1rem;
-    &:hover {
-        color: $primaryHover;
+    &__anchor {
+        text-decoration: none;
+        color: $defaultBlack;
+        padding: 1rem;
+        &:hover {
+            color: $primaryHover;
+        }
     }
 }
