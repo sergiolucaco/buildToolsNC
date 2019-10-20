@@ -43,3 +43,7 @@ npm run start
 npm run build
 ```
 >`NODE_ENV` set to `production`. This build will contain the JS, CSS and HTML files minified.
+
+#### Next steps
+
+- Use Parcel instead of Gulp to get the current functionalities.
