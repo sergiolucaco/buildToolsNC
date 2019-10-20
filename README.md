@@ -1,14 +1,5 @@
 # buildToolsNC
 
-
-SASS , BABEL, NUNJUCKS(prototyping ), watchers - no minified,
-linters SASS JS, production build - one file css, js minified html, carpeta assets
-build testing - travis
-Setup Apache to server the dist folder
-
-
-# buildToolsNC
-
 This project is made only for study purposes. In it, can be found a basic FrontEnd Build  that allow useful tools like hotreload or minify files when building production packages among others.
 
 The project has been developed using an HTML Template system `Nunjucks`, `SASS` and `ECMA2015 JS` with `BABEL` to grant better support. 
