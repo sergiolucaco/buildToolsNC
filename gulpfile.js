@@ -7,6 +7,7 @@ const babel = require('gulp-babel');
 const webpack = require('webpack-stream');
 const nunjucks = require('gulp-nunjucks');
 const htmlmin = require('gulp-htmlmin');
+const cssClean = require('gulp-clean-css');
 const gulpIf = require('gulp-if');
 const browserSync = require('browser-sync').create();
 
@@ -30,6 +31,7 @@ const paths = {
 gulp.task('css', () => gulp.src(paths.srcScss)
   .pipe(sass().on('error', sass.logError))
   .pipe(rename('styles.css'))
+  .pipe(gulpIf(isProduction, cssClean()))
   .pipe(gulp.dest(paths.distCSS))
   .pipe(browserSync.stream()));
 
